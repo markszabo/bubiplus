@@ -1,26 +1,25 @@
-This is a starter template for [Ionic](http://ionicframework.com/docs/) projects.
+This app is currently under development, and nothing is expect to work. If you want to join, feel free to contact me.
 
-## How to use this template
+## Planned features
+### Achievements (badges)
+Award the users badges based on their trips (similar gamification logic like [Nike+](http://howtonike.blogspot.com/2012/12/nike-trophies-collection.html)). All badges have three levels: bronze, silver, gold with more associated effort (usually more qualifying trip needed).
 
-*This template does not work on its own*. The shared files for each starter are found in the [ionic2-app-base repo](https://github.com/ionic-team/ionic2-app-base).
+* "In a row" type badges
+  * 5, 10, 30 days in a row
+  * 3, 5, 10 weeks in a row
+  * 3, 6, 12 months in a row
+* "Times a week/month/year" type badges
+  * 3, 5, 7 times a week
+  * 10, 20, 30 times a month
+  * 30, 100, 300 times a year
+* "Part of the day" type badges
+  * Dawn - 5, 10, 50 times between 3 - 6 am
+  * Party guy - 5, 10, 50 times between 11 pm - 3 am
+* Location based
+  * 1873 - Merge of Pest, Buda & Óbuda. 5, 10, 50 trips crossing the Danube
+  * Tourist - 5, 10, 50 trips touching one of the following sites: Hősök tere, TODO
 
-To use this template, either create a new ionic project using the ionic node.js utility, or copy the files from this repository into the [Starter App Base](https://github.com/ionic-team/ionic2-app-base).
 
-### With the Ionic CLI:
+## Used resources and sources
 
-Take the name after `ionic2-starter-`, and that is the name of the template to be used when using the `ionic start` command below:
-
-```bash
-$ sudo npm install -g ionic cordova
-$ ionic start myBlank blank
-```
-
-Then, to run it, cd into `myBlank` and run:
-
-```bash
-$ ionic cordova platform add ios
-$ ionic cordova run ios
-```
-
-Substitute ios for android if not on a Mac.
-
+* [Simple Ionic Login with Angular 2+](https://devdactic.com/login-ionic-2/) - for the basic login screen and logic
