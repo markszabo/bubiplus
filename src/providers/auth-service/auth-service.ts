@@ -16,6 +16,7 @@ export class User {
 @Injectable()
 export class AuthServiceProvider {
   currentUser: User;
+  //http: Http;
 
   constructor(public http: Http) {
     console.log('Hello AuthServiceProvider Provider');
@@ -27,10 +28,13 @@ export class AuthServiceProvider {
      } else {
        return Observable.create(observer => {
          // At this point make a request to your backend to make a real check!
-         let access = (credentials.password === "pass" && credentials.email === "Email");
-         this.currentUser = new User('Simon', 'saimon@devdactic.com');
-         observer.next(access);
-         observer.complete();
+         this.http.get('http://localhost:8000/login').subscribe(data => {
+            console.log(data);
+            let access = (credentials.password === "pass" && credentials.email === "Email");
+            this.currentUser = new User('Simon', 'saimon@devdactic.com');
+            observer.next(true);
+            observer.complete();
+         });
        });
      }
   }
