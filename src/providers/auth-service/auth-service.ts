@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
-import {Observable} from 'rxjs/Observable';
+import { Http, Response } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
+import { SERVER_URL } from '../../app/config';
 import 'rxjs/add/operator/map';
 
 export class User {
@@ -27,29 +28,21 @@ export class AuthServiceProvider {
        return Observable.throw("Please insert credentials");
      } else {
        return Observable.create(observer => {
-         // At this point make a request to your backend to make a real check!
-         this.http.get('http://localhost:8000/login').subscribe(data => {
+         this.http.get(SERVER_URL + 'iframe/?domain=mb&L=en&id=login&nolinks=1&bubimobil=1&redirect_account=https://templates.nextbike.net/bubi2014/bubi_mobil/account.html&redirect_index=https://templates.nextbike.net/bubi2014/bubi_mobil/bubi.html&logintype=login&user=' + credentials.email + '&pass=' + credentials.password).subscribe(data => {
+            console.log("Request successful, returned data:");
             console.log(data);
-            let access = (credentials.password === "pass" && credentials.email === "Email");
-            this.currentUser = new User('Simon', 'saimon@devdactic.com');
-            observer.next(true);
+            let access = false;
+            console.log(data.text());
+            if(data.text().indexOf("https://templates.nextbike.net/bubi2014/bubi_mobil/account.html") !== -1) {
+              access = true;
+              this.currentUser = new User("Username of " + credentials.email, credentials.email);
+            }
+            observer.next(access);
             observer.complete();
          });
        });
      }
   }
-
-/*  public register(credentials) { //TODO remove this function
-     if (credentials.email === null || credentials.password === null) {
-       return Observable.throw("Please insert credentials");
-     } else {
-       // At this point store the credentials to your backend!
-       return Observable.create(observer => {
-         observer.next(true);
-         observer.complete();
-       });
-     }
-  }*/
 
   public getUserInfo() : User {
      return this.currentUser;

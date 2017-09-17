@@ -19,7 +19,8 @@ export class LoginPage {
   }*/
 
   public login() {
-    this.showLoading()
+    console.log("Login pressed");
+    this.showLoading();
     this.auth.login(this.registerCredentials).subscribe(allowed => {
       if (allowed) {
         console.log("Allowed, setting root to HomePage");

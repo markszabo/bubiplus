@@ -4,5 +4,11 @@
   "type": "ionic-angular",
   "integrations": {
     "cordova": {}
+  },
+  "proxies": [
+  {
+    "path": "/iframe",
+    "proxyUrl": "http://172.16.166.164/iframe"
   }
+  ]
 }
